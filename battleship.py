@@ -4,7 +4,7 @@
 
     Author: Kevin Valverde
     Created: 7/20/2016
-    Last Updated: 7/26/2016
+    Last Updated: 7/27/2016
 """
 
 import os
@@ -63,7 +63,7 @@ class BattleShip:
     def clear_screen(self):
         """Clears the terminal screen"""
 
-        os.system('cls')
+        os.system('cls' if os.name == 'nt' else 'clear')
         # print("\033c", end="")
 
     def print_board_heading(self):
@@ -114,7 +114,7 @@ class BattleShip:
                 count += 1
         elif h_or_v == 'v':
             while count < ship_length:
-                coordinate = {chr(start_col + 65) + str(start_row - count): ""}
+                coordinate = {chr(start_col + 65) + str(int(start_row) - count): ""}
                 ship_coordinates.append(coordinate)
                 count += 1
         return ship_coordinates
